@@ -10,7 +10,7 @@ This project attempts to follow Sandi Metz's [4 Rules for Developers](http://rob
 
 ### No objects that end with 'er'.
 
-I confess: Naming objects that ended in 'er' had been part of my or my repertoir since I began to code. Thanks to [@staskie](github.com/staskie), I've been shown a new way and am starting to experiment with it in this project.
+I confess: Naming objects that ended in 'er' had been part of my or my repertoir since I began to code. Thanks to [@staskie](http://github.com/staskie), I've been shown a new way and am starting to experiment with it in this project.
 
 This is the reason why:
 
@@ -31,7 +31,7 @@ Another good read: [Carlo Pescio](http://www.carlopescio.com/2011/04/your-coding
 
 I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/BraceVsDoEnd.rdoc) for choosing between {} and do...end delimiters around blocks. So blocks which are evaluated for their result value, I surround with braces ({}); whereas blocks which are evaluated for their side-effects get do...end.
 
-Thanks to [@avdi](github.com/avdi) for tipping me to this.
+Thanks to [@avdi](http://github.com/avdi) for tipping me to this.
 
 ## Setup
 [Documentation](README.rdoc)
