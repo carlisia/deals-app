@@ -35,5 +35,5 @@ I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/Brac
 
 
 ## Setup
-[Documentation](readme.rdoc)
+[Documentation](README.rdoc)
 
