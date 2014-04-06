@@ -1,22 +1,16 @@
-= Deals App
+# Deals App
 
 A sample app that manages the import of data and persistence into multiple data models.
 
-=========
+## About the Code
 
-
-
-== Development
-
-=== About the code
-
-==== OO Rules
+### OO Rules
 
 This project attempts to follow Sandi Metz's Rules.
 
 A [description of the rules here](http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers).
 
-==== No objects that end with 'er'.
+### No objects that end with 'er'.
 
 I confess: Naming objects that ended in 'er' had been part of my or my repertoir since I began to code. Thanks to @staskie, I've been shown a new way and am starting to experiment with it in this project.
 
@@ -35,16 +29,11 @@ PurchaseFile: Now I immediately get to start thinking about what to do with a fi
 
 Another good read: [Carlo Pescio](http://www.carlopescio.com/2011/04/your-coding-conventions-are-hurting-you.html)
 
-==== Weirich convention
+### Weirich convention
 
 I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/BraceVsDoEnd.rdoc) for choosing between {} and do...end delimiters around blocks. So blocks which are evaluated for their result value, I surround with braces ({}); whereas blocks which are evaluated for their side-effects get do...end.
 
 
-== Setup
-
-=== Dependencies
-
-        $ Rails 4.0.0
-        $ Ruby 2.1.1
-        $ PostgreSQL 9.2
+## Setup
+[Documentation](readme.rdoc)
 
