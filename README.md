@@ -6,9 +6,7 @@ A sample app that manages the import of data and persistence into multiple data 
 
 ### OO Rules
 
-This project attempts to follow Sandi Metz's Rules.
-
-A [description of the rules here](http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers).
+This project attempts to follow Sandi Metz's [4 Rules for Developers](http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers).
 
 ### No objects that end with 'er'.
 
