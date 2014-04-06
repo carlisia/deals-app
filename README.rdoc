@@ -8,6 +8,9 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
+  $ Rails 4.0.0
+  $ Ruby 2.1.1
+  $ PostgreSQL 9.2
 
 * Configuration
 
