@@ -1,31 +1,54 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
+This README documents the steps necessary to get this application up and running.
 
 * System dependencies
   $ Rails 4.0.0
   $ Ruby 2.1.1
-  $ PostgreSQL 9.2
+  $ PostgreSQL 9.3
 
 * Configuration
 
+* Setting Up Postgres
+
+** Installation
+
+It’s better to install Postgres through Homebrew to get the latest version and the development files. This command will download and compile Postgres:
+
+  $ > brew install postgresql
+
+Finish creating the database:
+
+  $ > initdb /usr/local/var/postgres
+
+** Start Postgres
+
+From the terminal, run:
+  $ > pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+Verify that you are running the correct instance:
+
+  $ > psql --version
+  $ psql (PostgreSQL) 9.1.3
+  $ > which psql
+  $ /usr/local/bin/psql
+
 * Database creation
 
+** Variables
+
+In the development and test environments, it’s more convenient to have the database username be the same user in our system. Create a application.yml file under /config and add your ENV variable(s). Mine looks like this:
+
+  $ LOCAL_PG_USER: "carlisia"
+
 * Database initialization
+
+Create the application's database:
+
+  $ rake db:create:all
 
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

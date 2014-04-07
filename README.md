@@ -2,7 +2,8 @@
 
 A sample app that manages the import of data and persistence into multiple data models.
 
-## About the Code
+## Setup
+[Documentation](README.rdoc)## About the Code
 
 ### OO Rules
 
@@ -21,7 +22,9 @@ Source: [Travis Griggs](http://objology.blogspot.com/2011/09/one-of-best-bits-of
 
 Example:
 
-FileImporter: Focus is on what the object does, which is to import a file. One big problem is that it sounds very generic and yet the code is probably supposed to be very specific.
+FileImporter: Focus is on what the object does, which sounds like it is to import a file. One big problem is that it sounds very generic and yet the code is probably supposed to be very specific.
+
+Instead:
 
 PurchaseFile: Now I immediately get to start thinking about what to do with a file that has purchase data.
 
@@ -33,6 +36,7 @@ I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/Brac
 
 Thanks to [@avdi](github.com/avdi) for tipping me to this.
 
-## Setup
-[Documentation](README.rdoc)
+## Tests
+
+
 
