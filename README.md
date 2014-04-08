@@ -3,7 +3,7 @@
 A sample app that manages the import of data and persistence into multiple data models.
 
 ## Setup
-[Documentation](README.rdoc)
+View all the instructions for setup in the [Documentation Section](README.rdoc).
 
 ## About the Code
 
