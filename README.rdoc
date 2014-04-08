@@ -2,16 +2,14 @@
 
 This README documents the steps necessary to get this application up and running.
 
-* System dependencies
+=== System dependencies
   $ Rails 4.0.0
   $ Ruby 2.1.1
   $ PostgreSQL 9.3
 
-* Configuration
+=== Setting Up Postgres
 
-* Setting Up Postgres
-
-** Installation
+==== Installation
 
 It’s better to install Postgres through Homebrew to get the latest version and the development files. This command will download and compile Postgres:
 
@@ -21,7 +19,7 @@ Finish creating the database:
 
   $ > initdb /usr/local/var/postgres
 
-** Start Postgres
+=== Start Postgres
 
 From the terminal, run:
   $ > pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
@@ -33,22 +31,32 @@ Verify that you are running the correct instance:
   $ > which psql
   $ /usr/local/bin/psql
 
-* Database creation
+=== Local Variables
 
-** Variables
-
-In the development and test environments, it’s more convenient to have the database username be the same user in our system. Create a application.yml file under /config and add your ENV variable(s). Mine looks like this:
+In the development and test environments, it’s more convenient to have the database username be the same user in the local system. Create an application.yml file under /config and add your ENV variable(s). Mine looks like this:
 
   $ LOCAL_PG_USER: "carlisia"
 
-* Database initialization
+=== Bundle the application
 
-Create the application's database:
+Inside the project directory, run the following command:
+
+  $ > bundle
+
+=== Database 
+
+Create the application and test databases:
 
   $ rake db:create:all
+  $ rake db:migrate
+  $ rake db:test:prepare
+  
+=== Running the Tests
 
-* How to run the test suite
+To run the unit tests:
 
-* Services (job queues, cache servers, search engines, etc.)
+  $ > rspec spec/models
+  
+To run the acceptance tests:
 
-* Deployment instructions
+  $ > rspec spec/features

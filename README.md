@@ -3,7 +3,9 @@
 A sample app that manages the import of data and persistence into multiple data models.
 
 ## Setup
-[Documentation](README.rdoc)## About the Code
+View all the instructions for setup in the [Documentation Section](README.rdoc).
+
+## About the Code
 
 ### OO Rules
 
@@ -11,7 +13,7 @@ This project attempts to follow Sandi Metz's [4 Rules for Developers](http://rob
 
 ### No objects that end with 'er'.
 
-I confess: Naming objects that ended in 'er' had been part of my or my repertoir since I began to code. Thanks to [@staskie](http://github.com/staskie), I've been shown a new way and am starting to experiment with it in this project.
+I confess: Naming objects that ended in 'er' had been part of my or my repertoire since I began to code. Thanks to [@staskie](http://github.com/staskie), I've been shown a new way and am starting to experiment with it in this project.
 
 This is the reason why:
 
@@ -36,7 +38,7 @@ I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/Brac
 
 Thanks to [@avdi](http://github.com/avdi) for tipping me to this.
 
-## Tests
+## About the Tests
 
 
 
