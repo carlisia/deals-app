@@ -3,7 +3,9 @@
 A sample app that manages the import of data and persistence into multiple data models.
 
 ## Setup
-[Documentation](README.rdoc)## About the Code
+[Documentation](README.rdoc)
+
+## About the Code
 
 ### OO Rules
 
@@ -36,7 +38,7 @@ I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/Brac
 
 Thanks to [@avdi](http://github.com/avdi) for tipping me to this.
 
-## Tests
+## About the Tests
 
 
 
