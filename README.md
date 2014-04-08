@@ -13,7 +13,7 @@ This project attempts to follow Sandi Metz's [4 Rules for Developers](http://rob
 
 ### No objects that end with 'er'.
 
-I confess: Naming objects that ended in 'er' had been part of my or my repertoir since I began to code. Thanks to [@staskie](http://github.com/staskie), I've been shown a new way and am starting to experiment with it in this project.
+I confess: Naming objects that ended in 'er' had been part of my or my repertoire since I began to code. Thanks to [@staskie](http://github.com/staskie), I've been shown a new way and am starting to experiment with it in this project.
 
 This is the reason why:
 
