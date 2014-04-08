@@ -31,7 +31,7 @@ Verify that you are running the correct instance:
   $ > which psql
   $ /usr/local/bin/psql
 
-==== Variables
+=== Local Variables
 
 In the development and test environments, it’s more convenient to have the database username be the same user in the local system. Create an application.yml file under /config and add your ENV variable(s). Mine looks like this:
 
@@ -57,6 +57,6 @@ To run the unit tests:
 
   $ > rspec spec/models
   
-To run the unit tests:
+To run the acceptance tests:
 
   $ > rspec spec/features
