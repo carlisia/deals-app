@@ -50,3 +50,13 @@ Create the application and test databases:
   $ rake db:create:all
   $ rake db:migrate
   $ rake db:test:prepare
+  
+=== Running the Tests
+
+To run the unit tests:
+
+  $ > rspec spec/models
+  
+To run the unit tests:
+
+  $ > rspec spec/features
