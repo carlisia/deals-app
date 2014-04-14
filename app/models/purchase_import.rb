@@ -3,36 +3,19 @@ require 'csv'
 class PurchaseImport
   include ActiveModel::Model
 
-  def initialize(attribute='', report)
+  def initialize(attribute='')
     @file = attribute unless !attribute
+    @report_data = {}
     @row_entities = {}
-    @report_data = report
+    @error_list = []
   end
 
   def save
-    @report_data[:num_records_imported] = 0
-    @report_data[:total_gross_value] = 0.00
-    @error_list = []
-    CSV.foreach(file.path,
-        headers: true,
-        :col_sep => "\t",
-        :header_converters => [:db_columns],
-        :converters => [:all, :blank_to_nil]).each_with_index do |row, row_index|
-      build_entities(row)
-      if @error_list.size > 0
-        @error_list.each do |message|
-          errors.add :base, "Row #{row_index+1}: #{message}"
-          return false
-        end
-      end
-      @report_data[:num_records_imported] += 1
-      @report_data[:total_gross_value] += (@row_entities[:deal].price *
-                                     @row_entities[:purchase].count.to_f)
-    end
-    true
+    init_report_data
+    file_processed?
   end
 
-  def prepare_report()
+  def report_data
     @report_data[:file_name] = file.original_filename
     @report_data
   end
@@ -43,6 +26,35 @@ class PurchaseImport
 
   private
   attr_accessor :file
+
+  def file_processed?
+    CSV.foreach(file.path,
+        headers: true,
+        :col_sep => "\t",
+        :header_converters => [:db_columns],
+        :converters => [:all, :blank_to_nil]).each_with_index do |row, row_index|
+      build_entities(row)
+      if @error_list.size > 0
+        process_errors(row, row_index)
+        return false
+      end
+      increment_report_count
+    end
+    true
+  end
+
+  def increment_report_count
+    @report_data[:num_records_imported] += 1
+    @report_data[:total_gross_value] += (@row_entities[:deal].price *
+                                     @row_entities[:purchase].count.to_f)
+  end
+
+  def process_errors(row, row_index)
+    @error_list.each do |message|
+      errors.add :base, "Row #{row_index+1}: #{message}"
+      return
+    end
+  end
 
   def build_entities(row)
     @row_entities = {}
@@ -100,12 +112,9 @@ class PurchaseImport
      }
   end
 
-  def prepare_error_messages
-    imported_purchases.each_with_index do |purchase, index|
-      purchase.errors.full_messages.each do |message|
-        errors.add :base, "Row #{index+2}: #{message}"
-      end
-    end
+  def init_report_data
+    @report_data[:num_records_imported] = 0
+    @report_data[:total_gross_value] = 0.00
   end
 
   CSV::Converters[:blank_to_nil] = lambda do |field|
