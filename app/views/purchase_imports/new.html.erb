@@ -1,0 +1,30 @@
+<h1>Deals App</h1>
+
+<legend>Please select a file to import</legend>
+
+<div class=container>
+  <%= form_tag purchase_imports_path, multipart: true do %>
+
+    <div class="form-group">
+      <%= file_field_tag :file %>
+      <p class="help-block">Please select a tab delimited file.</p>
+      <%= submit_tag "Import File", class: 'btn btn-primary' %>
+    </div>
+
+
+    <% if @purchase_imports && @purchase_imports.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@purchase_imports.errors.count, "error") %> prohibited this import from completing:</h2>
+        <ul>
+        <% @purchase_imports.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+
+  <br>
+  <h4>You may download a small sample file:
+  <%= link_to('Download','/downloads/purchase_data.tsv') %></h4>
+</div>
