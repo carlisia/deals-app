@@ -9,6 +9,6 @@ class ImportReportsController < ApplicationController
   end
 
   private
-  attr_reader :report
-  helper_method :report
+  attr_reader :report, :reports
+  helper_method :report, :reports
 end

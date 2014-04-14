@@ -24,7 +24,7 @@ FactoryGirl.define do
   end
 
   factory :import_report do
-    file_name               { Faker::Lorem.sentences(1) }
+    file_name               { generate(:filename) }
     num_records_imported    { Faker::Number.number(2) }
     total_gross_value       { 760.80 }
   end

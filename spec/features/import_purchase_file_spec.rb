@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 feature 'User attempts to import a file and' do
-
   scenario 'sees an upload form' do
     visit root_path
     expect(page).to have_title('DealsApp')
@@ -42,5 +41,14 @@ feature 'User attempts to import a file and' do
       visit root_path
       click_button "Import File"
       page.should have_content('File incorrectly formated or no file selected.')
+  end
+end
+
+feature 'User navigates through top menu' do
+  scenario 'and sees all reports' do
+    report = create(:import_report)
+    visit import_reports_url
+    expect(page).to have_content(report.total_gross_value)
+    expect(page).to have_content(report.file_name)
   end
 end
