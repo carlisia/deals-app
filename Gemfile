@@ -9,14 +9,13 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'figaro'
-gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 gem 'gmaps4rails', '2.1.2'
 
 group :development, :test do
-  gem "rspec-rails", "~> 2.14.0"
+  gem "rspec-rails"
   gem "factory_girl_rails", "~> 4.2.1"
   gem 'better_errors'
   gem 'quiet_assets'
@@ -25,7 +24,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "faker", "~> 1.1.2"
+  gem "faker", "~> 1.2.0"
   gem 'capybara', '~> 2.1.0'
   gem 'database_cleaner'
   gem "shoulda-matchers", "~> 2.2.0"

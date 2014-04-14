@@ -31,8 +31,6 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    bootstrap-sass (3.1.1.0)
-      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -62,7 +60,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    faker (1.1.2)
+    faker (1.2.0)
       i18n (~> 0.5)
     ffi (1.9.3)
     figaro (0.7.0)
@@ -206,12 +204,11 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter
   better_errors
-  bootstrap-sass
   capybara (~> 2.1.0)
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails (~> 4.2.1)
-  faker (~> 1.1.2)
+  faker (~> 1.2.0)
   figaro
   gmaps4rails (= 2.1.2)
   guard-rspec
@@ -224,7 +221,7 @@ DEPENDENCIES
   rails_12factor
   rails_layout
   rgeo
-  rspec-rails (~> 2.14.0)
+  rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
   shoulda-matchers (~> 2.2.0)
