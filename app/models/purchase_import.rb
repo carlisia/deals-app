@@ -27,16 +27,18 @@ class PurchaseImport
   attr_accessor :file
 
   def file_processed?
-    CSV.foreach(file.path,
-        headers: true,
-        :col_sep => "\t",
-        :header_converters => [:db_columns],
-        :converters => [:all, :blank_to_nil]).each_with_index do |row, row_index|
-      build_entities(row)
-      return if error_found?(row_index)
-      increment_report_count
+    ActiveRecord::Base.transaction do
+      CSV.foreach(file.path,
+          headers: true,
+          :col_sep => "\t",
+          :header_converters => [:db_columns],
+          :converters => [:all, :blank_to_nil]).each_with_index do |row, row_index|
+        build_entities(row)
+        return unless clean_of_errors?(row_index)
+        increment_report_count
+      end
+      true
     end
-    true
   end
 
   def increment_report_count
@@ -45,12 +47,12 @@ class PurchaseImport
                                      @row_entities[:purchase].count.to_f)
   end
 
-  def error_found?(row_index)
-    return unless @error_list.size > 0
+  def clean_of_errors?(row_index)
+    return true unless @error_list.size > 0
     @error_list.each do |message|
       errors.add :base, "Row #{row_index+1}: #{message}"
-      return true
     end
+    raise ActiveRecord::Rollback
   end
 
   def build_entities(row)

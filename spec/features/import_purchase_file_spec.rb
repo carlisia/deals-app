@@ -28,6 +28,16 @@ feature 'User attempts to import a file and' do
     expect(Purchase.count).to eq purchase_count
   end
 
+  scenario 'gets an error message when file is invalid and rolls back saved transactions' do
+    visit root_path
+    purchase_count = Purchase.count
+    file_path = Rails.root + "spec/fixtures/purchase_data-invalid2.tsv"
+    attach_file('file', file_path)
+    click_on 'Import File'
+    page.should have_content('error prohibited this import from completing:')
+    expect(Purchase.count).to eq purchase_count
+  end
+
   scenario "gets an alert message when no file is selected" do
       visit root_path
       click_button "Import File"
