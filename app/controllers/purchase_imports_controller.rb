@@ -1,7 +1,6 @@
 class PurchaseImportsController < ApplicationController
 
   def create
-    file = params[:file]
     if file
       process_file
       url_after_save
@@ -15,16 +14,26 @@ class PurchaseImportsController < ApplicationController
   helper_method :purchase_imports
 
   def process_file
-    @purchase_imports = PurchaseImport.new(params[:file])
+    @report = ImportReport.new
+    @purchase_imports = PurchaseImport.new(params[:file], @report)
   end
 
   def url_after_save
     if @purchase_imports.save
-      @report = ImportReport.create!(@purchase_imports.prepare_report)
+      prepare_report
       flash[:notice] = "File imported successfully."
       redirect_to import_report_url(@report.id)
     else
       render :new
     end
+  end
+
+  def prepare_report
+    @purchase_imports.prepare_report
+    @report.save!
+  end
+
+  def file
+    params[:file]
   end
 end

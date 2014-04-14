@@ -3,10 +3,10 @@ require 'csv'
 class PurchaseImport
   include ActiveModel::Model
 
-  def initialize(attribute='')
+  def initialize(attribute='', report)
     @file = attribute unless !attribute
     @row_entities = {}
-    @report_data = {}
+    @report_data = report
   end
 
   def save
