@@ -1,6 +1,6 @@
 DealsApp::Application.routes.draw do
 
-  resources :purchase_imports, only: [:new] do
+  resources :purchase_imports, only: [:index, :new] do
     post :create, :on => :collection
   end
 
