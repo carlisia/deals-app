@@ -7,13 +7,13 @@ feature 'User attempts to import a file and' do
     expect(page).to have_title('DealsApp')
   end
 
-  scenario 'sees a report when the all the data in the file is valid' do
+  scenario 'sees a report of only the imported file when the all the data in the file is valid' do
     visit root_path
     file_path = Rails.root + "spec/fixtures/purchase_data.tsv"
     attach_file('file', file_path)
     click_on 'Import File'
-    visit purchase_imports_path
-    expect(page).to have_content('$95.00')
+    expect(page).to have_content('95.0')
+    expect(page).not_to have_content('All Reports List')
   end
 
   scenario 'gets an error message when file is invalid' do
@@ -29,4 +29,17 @@ feature 'User attempts to import a file and' do
       click_button "Import File"
       page.should have_content('File incorrectly formated or no file selected.')
   end
+
+  def prepare
+    user = create(:admin)
+
+    visit admin_path(as: user)
+    click_link 'Mentors'
+    click_link 'Add new'
+    select(user.name, from: 'User')
+    click_button 'Save'
+
+    expect(page).to have_content('Mentor successfully created')
+  end
+
 end

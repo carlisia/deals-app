@@ -1,7 +1,6 @@
 require 'faker'
 
 FactoryGirl.define do
-
   sequence :filename do |n|
     "filename-#{n}.tsv"
   end
@@ -20,14 +19,8 @@ FactoryGirl.define do
   end
 
   factory :deal do
-    description    { Faker::Lorem.sentences(1) }
-    price { rand(1..100.0).round(2) }
-  end
-
-  factory :purchase_import do
-    # file ActionDispatch::Http::UploadedFile.new(:tempfile => File.new("#{Rails.root}/spec/fixtures/purchase_data.tsv"), :filename => "purchase_data.tsv")
-
-    file = fixture_file_upload('purchase_data.tsv')
+    description   { Faker::Lorem.sentences(1) }
+    price         { rand(1..100.0).round(2) }
   end
 
   factory :import_report do
