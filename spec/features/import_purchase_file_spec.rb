@@ -39,7 +39,7 @@ feature 'User attempts to import a file and' do
 
   scenario "gets an alert message when no file is selected" do
       visit root_path
-      click_button "Import File"
+      click_on "Import File"
       page.should have_content('File incorrectly formated or no file selected.')
   end
 end
