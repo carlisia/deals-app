@@ -16,7 +16,6 @@ class PurchaseImport
   end
 
   def report_data
-    @report_data[:file_name] = file.original_filename
     @report_data
   end
 
@@ -34,7 +33,7 @@ class PurchaseImport
         :header_converters => [:db_columns],
         :converters => [:all, :blank_to_nil]).each_with_index do |row, row_index|
       build_entities(row)
-      return if error_found?(row, row_index)
+      return if error_found?(row_index)
       increment_report_count
     end
     true
@@ -46,7 +45,7 @@ class PurchaseImport
                                      @row_entities[:purchase].count.to_f)
   end
 
-  def error_found?(row, row_index)
+  def error_found?(row_index)
     return unless @error_list.size > 0
     @error_list.each do |message|
       errors.add :base, "Row #{row_index+1}: #{message}"
@@ -111,6 +110,7 @@ class PurchaseImport
   end
 
   def init_report_data
+    @report_data[:file_name] = file.original_filename
     @report_data[:num_records_imported] = 0
     @report_data[:total_gross_value] = 0.00
   end

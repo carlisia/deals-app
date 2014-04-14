@@ -2,7 +2,7 @@ class PurchaseImportsController < ApplicationController
 
   def create
     if file
-      @purchase_imports = PurchaseImport.new(params[:file])
+      @purchase_imports = PurchaseImport.new(file)
       url_after_save
     else
       redirect_to root_url, alert: "File incorrectly formated or no file selected."
