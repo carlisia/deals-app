@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DealsApp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "DealsApp" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Dealsapp" %>">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/css/bootstrap.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= flash[:notice] %>
+    <header class="navbar navbar-fixed-top">
+          <nav class="navbar-inner">
+            <div class="container">
+              <%= render 'layouts/navigation' %>
+            </div>
+          </nav>
+        </header>
+        <div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
+        <main role="main">
+          <div class="container">
+            <div class="content-body">
+               <div class="row">
+                <div class="span12">
+                  <%= render 'layouts/messages' %>
+                  <%= yield %>
+                </div>
+              </div>
+              <footer>
+              </footer>
+            </div>
+          </div>
+        </main>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>
+  </body>
 </html>
