@@ -29,17 +29,4 @@ feature 'User attempts to import a file and' do
       click_button "Import File"
       page.should have_content('File incorrectly formated or no file selected.')
   end
-
-  def prepare
-    user = create(:admin)
-
-    visit admin_path(as: user)
-    click_link 'Mentors'
-    click_link 'Add new'
-    select(user.name, from: 'User')
-    click_button 'Save'
-
-    expect(page).to have_content('Mentor successfully created')
-  end
-
 end
