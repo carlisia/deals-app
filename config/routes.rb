@@ -4,7 +4,7 @@ DealsApp::Application.routes.draw do
     post :create, :on => :collection
   end
 
-  resources :import_reports, :only => [:show]
+  resources :import_reports, :only => [:index, :show]
 
   root 'purchase_imports#new'
 

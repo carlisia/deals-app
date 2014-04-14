@@ -1,0 +1,21 @@
+<h1>All Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Number or Records Imported</th>
+      <th>Total Gross Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.file_name %></td>
+        <td><%= report.num_records_imported %></td>
+        <td><%= report.total_gross_value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
