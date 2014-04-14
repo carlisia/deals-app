@@ -34,10 +34,7 @@ class PurchaseImport
         :header_converters => [:db_columns],
         :converters => [:all, :blank_to_nil]).each_with_index do |row, row_index|
       build_entities(row)
-      if @error_list.size > 0
-        process_errors(row, row_index)
-        return false
-      end
+      return if error_found?(row, row_index)
       increment_report_count
     end
     true
@@ -49,10 +46,11 @@ class PurchaseImport
                                      @row_entities[:purchase].count.to_f)
   end
 
-  def process_errors(row, row_index)
+  def error_found?(row, row_index)
+    return unless @error_list.size > 0
     @error_list.each do |message|
       errors.add :base, "Row #{row_index+1}: #{message}"
-      return
+      return true
     end
   end
 
