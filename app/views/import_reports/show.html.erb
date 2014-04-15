@@ -1,12 +1,24 @@
-<p>
-<p>
-  <strong>Name:</strong>
+<h1>Import Report</h1>
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Records Imported</th>
+      <th>Total Gross Value</th>
+      <th>Import date/time</th>
+    </tr>
+  </thead>
 
-</p>
-
-
-    <td><%= report.file_name %></td>
-    <td><%= report.num_records_imported %></td>
-    <td><%= report.total_gross_value %></td>
+  <tbody>
+    <tr>
+      <td><%= report.file_name %></td>
+      <td><%= report.num_records_imported %></td>
+      <td>$<%= number_with_precision(report.total_gross_value, precision: 2) %></td>
+      <td><%= Time.at(report.created_at).strftime('%m/%d/%Y at %I:%M %p') %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
