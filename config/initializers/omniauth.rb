@@ -1,0 +1,10 @@
+require 'openid/store/filesystem'
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :open_id, store: OpenID::Store::Filesystem.new(Rails.root.join('tmp', 'openid'))
+  provider :open_id, :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
+end
+
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}

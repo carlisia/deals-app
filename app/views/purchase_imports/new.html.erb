@@ -4,14 +4,11 @@
 
 <div class=container>
   <%= form_tag purchase_imports_path, multipart: true do %>
-
     <div class="form-group">
       <%= file_field_tag :file %>
       <p class="help-block">Please select a tab delimited file.</p>
       <%= submit_tag "Import File", class: 'btn btn-primary' %>
     </div>
-
-
     <% if @purchase_imports && @purchase_imports.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@purchase_imports.errors.count, "error") %> prohibited this import from completing:</h2>
@@ -23,8 +20,11 @@
       </div>
     <% end %>
   <% end %>
-
   <br>
-  <h4>You may download a small sample file:
-  <%= link_to('Download','/downloads/purchase_data.tsv') %></h4>
+  <h4>You may download small sample files:</h4>
+
+  <%= link_to('Valid file','/downloads/purchase_data.tsv') %><br/>
+  <%= link_to('Invalid file','/downloads/purchase_data-invalid.tsv') %> with missing data in the first row.<br/>
+  <%= link_to('Invalid file','/downloads/purchase_data-invalid2.tsv') %> with missing data in the second row, good for demonstrating transaction rollback after saved records.
+
 </div>

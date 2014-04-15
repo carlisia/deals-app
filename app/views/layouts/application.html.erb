@@ -10,14 +10,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= flash[:notice] %>
-    <header class="navbar navbar-fixed-top">
-          <nav class="navbar-inner">
-            <div class="container">
-              <%= render 'layouts/navigation' %>
-            </div>
-          </nav>
-        </header>
+
+    <% if current_user %>
+      <header class="navbar navbar-fixed-top">
+            <nav class="navbar-inner">
+              <div class="container">
+                <%= render 'layouts/navigation' %>
+              </div>
+            </nav>
+      </header>
+    <% end  %>
+
         <div id="fix-for-navbar-fixed-top-spacing" style="height: 42px;">&nbsp;</div>
         <main role="main">
           <div class="container">

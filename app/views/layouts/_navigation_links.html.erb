@@ -1,2 +1,6 @@
-<li><%= link_to 'Home', root_path('about') %></li>
+<li><%= link_to 'Home', new_purchase_import_url %></li>
 <li><%= link_to 'All Reports', import_reports_url %></li>
+
+<% if current_user %>
+<li><%= link_to("Logout", :controller => "sessions", :action => 'destroy') %></li>
+<% end  %>

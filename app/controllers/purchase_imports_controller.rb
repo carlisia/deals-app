@@ -5,7 +5,7 @@ class PurchaseImportsController < ApplicationController
       @purchase_imports = PurchaseImport.new(file)
       url_after_save
     else
-      redirect_to root_url, alert: "File incorrectly formated or no file selected."
+      redirect_to new_purchase_import_url, alert: "File incorrectly formated or no file selected."
     end
   end
 

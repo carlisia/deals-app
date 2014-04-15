@@ -2,12 +2,13 @@ require 'spec_helper'
 
 feature 'User attempts to import a file and' do
   scenario 'sees an upload form' do
-    visit root_path
+    visit new_purchase_import_url
     expect(page).to have_title('DealsApp')
+    expect(page).to have_content('Please select a file to import')
   end
 
   scenario 'sees a report of only the imported file when the all the data in the file is valid' do
-    visit root_path
+    visit new_purchase_import_url
     purchase_count = Purchase.count
     file_path = Rails.root + "spec/fixtures/purchase_data.tsv"
     attach_file('file', file_path)
@@ -18,7 +19,7 @@ feature 'User attempts to import a file and' do
   end
 
   scenario 'gets an error message when file is invalid' do
-    visit root_path
+    visit new_purchase_import_url
     purchase_count = Purchase.count
     file_path = Rails.root + "spec/fixtures/purchase_data-invalid.tsv"
     attach_file('file', file_path)
@@ -28,7 +29,7 @@ feature 'User attempts to import a file and' do
   end
 
   scenario 'gets an error message when file is invalid and rolls back saved transactions' do
-    visit root_path
+    visit new_purchase_import_url
     purchase_count = Purchase.count
     file_path = Rails.root + "spec/fixtures/purchase_data-invalid2.tsv"
     attach_file('file', file_path)
@@ -38,7 +39,7 @@ feature 'User attempts to import a file and' do
   end
 
   scenario "gets an alert message when no file is selected" do
-      visit root_path
+      visit new_purchase_import_url
       click_on "Import File"
       page.should have_content('File incorrectly formated or no file selected.')
   end
