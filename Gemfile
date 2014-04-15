@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'figaro'
 gem 'high_voltage'
+gem 'omniauth-openid'
 
 group :development, :test do
   gem "rspec-rails"
