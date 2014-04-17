@@ -56,6 +56,4 @@ Another good read: [Carlo Pescio](http://www.carlopescio.com/2011/04/your-coding
 
 ### Weirich convention
 
-I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/BraceVsDoEnd.rdoc) for choosing between {} and do...end delimiters around blocks. So blocks which are evaluated for their result value, I surround with braces ({}); whereas blocks which are evaluated for their side-effects get do...end.
-
-Thanks to [@avdi](http://github.com/avdi) for tipping me to this.
+I use the ["Weirich convention"](http://onestepback.org/index.cgi/Tech/Ruby/BraceVsDoEnd.rdoc) for choosing between {} and do...end delimiters around blocks. Thanks to [@avdi](http://github.com/avdi) for tipping me to this.
